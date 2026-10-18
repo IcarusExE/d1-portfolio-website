@@ -1,0 +1,4 @@
+ADMIN_USERNAME=admin
+ADMIN_PASSWORD_HASH=replace-with-pbkdf2-hash
+SESSION_SECRET=replace-with-at-least-32-random-characters
+ALLOWED_ORIGIN=http://localhost:8787
