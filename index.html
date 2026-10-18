@@ -4,136 +4,126 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Kenan Kuşçu - Yazılım geliştirici portfolyosu" />
-    <meta name="theme-color" content="#090b0e" />
+    <meta name="theme-color" content="#050816" />
     <title>Kenan Kuşçu | Yazılım Geliştirici</title>
     <script type="module" src="/src/main.js"></script>
   </head>
-  <body>
+  <body class="portfolio-body">
     <a class="skip-link" href="#main-content">İçeriğe geç</a>
+
     <header class="site-header" id="top">
       <a class="wordmark" href="#top" aria-label="Kenan Kuşçu ana sayfa">
-        <span>Kenan</span><strong>Kuşçu</strong>
+        <span class="wordmark-mark">K</span><strong>Kenan Kuşçu</strong>
       </a>
       <nav class="desktop-nav" aria-label="Ana menü">
         <a href="#projects">Projeler</a>
-        <a href="#skills">Yetenekler</a>
+        <a href="#skills">Teknolojiler</a>
+        <a href="#journey">Yolculuk</a>
         <a href="#contact">İletişim</a>
       </nav>
+      <button class="motion-toggle" id="motion-toggle" type="button" aria-label="Hareketi durdur" title="Hareketi durdur">
+        <i data-lucide="pause"></i>
+      </button>
     </header>
 
     <main id="main-content">
       <section class="hero" aria-labelledby="hero-name">
+        <canvas id="hero-canvas" aria-label="Etkileşimli üç boyutlu geliştirici çalışma alanı"></canvas>
+        <div class="hero-vignette" aria-hidden="true"></div>
         <div class="hero-copy">
-          <p class="availability"><span></span><span>Yeni projelere açık</span></p>
-          <h1 id="hero-name">Kenan Kuşçu</h1>
+          <p class="hero-intro">Merhaba, ben</p>
+          <h1 id="hero-name">Kenan <br />Kuşçu</h1>
           <p class="hero-title" id="hero-title">Yazılım Geliştirici ve Bilgisayar Programcılığı Öğrencisi</p>
           <p class="hero-statement" id="hero-statement">Fikirleri anlaşılır, hızlı ve sağlam dijital ürünlere dönüştürüyorum.</p>
-          <a class="primary-link" href="#projects"><span>Çalışmalarımı incele</span><i data-lucide="arrow-down-right"></i></a>
-        </div>
-        <aside class="hero-system" aria-label="Teknik sistem özeti">
-          <header class="system-header">
-            <span>Şu an geliştirdiğim</span>
-            <span class="system-state"><i></i><span>Aktif</span></span>
-          </header>
-          <div class="system-canvas" aria-hidden="true">
-            <div class="system-browser">
-              <span></span><span></span><span></span>
-              <strong>portfolio.dev</strong>
-            </div>
-            <div class="system-flow">
-              <div class="system-node primary-node"><i data-lucide="layout-template"></i><span>Vanilla JS</span></div>
-              <span class="flow-line"></span>
-              <div class="system-node"><i data-lucide="cloud"></i><span>Hono Worker</span></div>
-              <span class="flow-line split-line"></span>
-              <div class="system-leaves">
-                <div class="system-node"><i data-lucide="database"></i><span>D1</span></div>
-                <div class="system-node"><i data-lucide="shield-check"></i><span>Auth</span></div>
-              </div>
-            </div>
+          <div class="hero-actions">
+            <a class="primary-link" href="#projects">Projeleri gör<i data-lucide="arrow-down-right"></i></a>
+            <a class="icon-link" id="hero-github" href="https://github.com/icarusexe" target="_blank" rel="noopener noreferrer" aria-label="GitHub profilini aç" title="GitHub">
+              <i data-lucide="code-2"></i>
+            </a>
+            <a class="icon-link" id="hero-email" href="#contact" aria-label="İletişime geç" title="İletişim">
+              <i data-lucide="mail"></i>
+            </a>
           </div>
-          <footer>
-            <span>Uçtan uca, yönetilebilir web ürünleri</span>
-            <i data-lucide="arrow-up-right"></i>
-          </footer>
-        </aside>
+        </div>
+        <a class="scroll-cue" href="#about" aria-label="Hakkımda bölümüne geç"><span></span><i data-lucide="arrow-down"></i></a>
       </section>
 
-      <section class="identity-strip" aria-label="Profil özeti">
-        <div class="identity-item">
-          <i data-lucide="graduation-cap"></i>
-          <div>
-            <span>Eğitim</span>
-            <strong>Ankara Üniversitesi · Bilgisayar Programcılığı</strong>
-          </div>
-        </div>
-        <div class="identity-item">
-          <i data-lucide="activity"></i>
-          <div>
-            <span>Geliştirme durumu</span>
-            <strong>Aktif olarak ürün geliştiriyor</strong>
-          </div>
-        </div>
-        <div class="identity-item">
-          <i data-lucide="map-pin"></i>
-          <div>
-            <span>Konum</span>
-            <strong>Ankara, Türkiye</strong>
+      <section class="section about-section" id="about" aria-labelledby="about-title">
+        <header class="section-heading compact-heading">
+          <p class="section-kicker">Profil</p>
+          <h2 id="about-title">Merakla öğreniyor,<br />ürün geliştiriyorum.</h2>
+        </header>
+        <div class="about-layout">
+          <p class="about-copy" id="about-copy">Ankara Üniversitesi Bilgisayar Programcılığı öğrencisiyim. Öğrenirken üreten, kullanılabilir web deneyimleri geliştiren bir yazılım geliştiriciyim.</p>
+          <div class="about-signals" aria-label="Profil özeti">
+            <div><i data-lucide="graduation-cap"></i><span>Eğitim</span><strong>Ankara Üniversitesi</strong></div>
+            <div><i data-lucide="code-2"></i><span>Odak</span><strong>Full-stack web</strong></div>
+            <div><i data-lucide="map-pin"></i><span>Konum</span><strong>Ankara, Türkiye</strong></div>
           </div>
         </div>
       </section>
 
       <section class="section projects-section" id="projects" aria-labelledby="projects-title">
         <header class="section-heading">
-          <h2 id="projects-title">Seçili çalışmalar</h2>
-          <p>Öğrenirken geliştirdiğim ve kullanılabilir hale getirdiğim projeler.</p>
+          <div><p class="section-kicker">Seçili çalışmalar</p><h2 id="projects-title">Düşünceden<br />çalışan ürüne.</h2></div>
+          <p>Backend altyapısından kullanıcı arayüzüne kadar geliştirdiğim projeler.</p>
         </header>
         <div class="project-list" id="project-list" aria-live="polite">
-          <div class="loading-line">İçerik yükleniyor...</div>
+          <div class="loading-line">Projeler hazırlanıyor...</div>
         </div>
       </section>
 
       <section class="section skills-section" id="skills" aria-labelledby="skills-title">
-        <header class="section-heading">
-          <h2 id="skills-title">Çalışma araçlarım</h2>
-          <p>Bir fikri çalışan ürüne dönüştürmek için kullandığım teknolojiler.</p>
+        <header class="section-heading centered-heading">
+          <p class="section-kicker">Teknoloji yığını</p>
+          <h2 id="skills-title">Üretirken kullandığım araçlar.</h2>
+          <p>Her teknoloji, çalışan bir ürünün farklı katmanını tamamlıyor.</p>
         </header>
-        <div class="skills-list" id="skills-list" aria-live="polite"></div>
+        <div class="skills-stage">
+          <div class="skills-orbit" aria-hidden="true"><span></span><span></span><span></span><i></i></div>
+          <div class="skills-list" id="skills-list" aria-live="polite"></div>
+        </div>
       </section>
 
-      <section class="section about-section" aria-labelledby="about-title">
-        <header class="about-heading">
-          <h2 id="about-title">Hakkımda</h2>
-          <span>Yaklaşım</span>
+      <section class="section journey-section" id="journey" aria-labelledby="journey-title">
+        <header class="section-heading">
+          <div><p class="section-kicker">Yolculuk</p><h2 id="journey-title">Öğrenme ile üretim aynı çizgide.</h2></div>
+          <p>Akademik temeli gerçek ürünler geliştirerek güçlendiriyorum.</p>
         </header>
-        <div class="about-content">
-          <p id="about-copy">Ankara Üniversitesi Bilgisayar Programcılığı öğrencisiyim. Öğrenirken üreten, kullanılabilir web deneyimleri geliştiren bir yazılım geliştiriciyim.</p>
-          <div class="about-grid">
-            <div>
-              <i data-lucide="scan-line"></i>
-              <strong>Önce netlik</strong>
-              <span>Karmaşıklığı sade, anlaşılır akışlara dönüştürüyorum.</span>
-            </div>
-            <div>
-              <i data-lucide="gauge"></i>
-              <strong>Ölçülebilir kalite</strong>
-              <span>Performans, erişilebilirlik ve güvenliği birlikte ele alıyorum.</span>
-            </div>
-          </div>
+        <div class="timeline">
+          <article class="timeline-item">
+            <span class="timeline-dot"><i data-lucide="graduation-cap"></i></span>
+            <div class="timeline-meta">Ankara Üniversitesi</div>
+            <div class="timeline-copy"><h3>Bilgisayar Programcılığı</h3><p>Yazılım geliştirme, veritabanı sistemleri ve web teknolojileri üzerine akademik temel.</p></div>
+          </article>
+          <article class="timeline-item">
+            <span class="timeline-dot active"><i data-lucide="sparkles"></i></span>
+            <div class="timeline-meta">Aktif olarak</div>
+            <div class="timeline-copy"><h3>Full-stack ürün geliştirme</h3><p>Cloudflare Workers, D1 ve modern frontend araçlarıyla fikirleri yayına alınmış uygulamalara dönüştürüyorum.</p></div>
+          </article>
+          <article class="timeline-item">
+            <span class="timeline-dot"><i data-lucide="orbit"></i></span>
+            <div class="timeline-meta">Sıradaki adım</div>
+            <div class="timeline-copy"><h3>Daha güçlü web deneyimleri</h3><p>Performans, erişilebilirlik ve etkileşim tasarımını birlikte ele alan ürünler üzerine çalışıyorum.</p></div>
+          </article>
         </div>
       </section>
 
       <section class="contact-section" id="contact" aria-labelledby="contact-title">
-        <div>
-          <h2 id="contact-title">Birlikte bir şey geliştirelim.</h2>
-          <p>Bir proje fikrini, staj fırsatını veya teknik bir konuyu konuşmak için ulaşabilirsin.</p>
+        <div class="contact-visual" aria-hidden="true"><canvas id="contact-canvas"></canvas></div>
+        <div class="contact-copy">
+          <p class="section-kicker">İletişim</p>
+          <h2 id="contact-title">Bir sonraki fikri<br />birlikte geliştirelim.</h2>
+          <p>Bir proje, staj fırsatı veya teknik bir konu için bana ulaşabilirsin.</p>
+          <div class="contact-links" id="contact-links"></div>
         </div>
-        <div class="contact-links" id="contact-links"></div>
       </section>
     </main>
 
-    <footer>
+    <footer class="site-footer">
       <span>© <span id="year"></span> Kenan Kuşçu</span>
-      <a href="#top"><span>Başa dön</span><i data-lucide="arrow-up"></i></a>
+      <a href="https://github.com/Naresh-Khatri/3d-portfolio" target="_blank" rel="noopener noreferrer">3D referans</a>
+      <a href="#top">Başa dön<i data-lucide="arrow-up"></i></a>
     </footer>
   </body>
 </html>

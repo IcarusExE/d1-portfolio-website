@@ -1,6 +1,8 @@
 # Kenan Kuşçu Portfolio
 
-Cloudflare Workers, D1, Tailwind CSS and Vanilla JavaScript based Turkish portfolio with a protected admin panel.
+Cloudflare Workers, D1, Tailwind CSS, Vanilla JavaScript and Three.js based Turkish portfolio with a protected admin panel.
+
+The visitor experience takes visual direction from Naresh Khatri's MIT-licensed [3D Portfolio](https://github.com/Naresh-Khatri/3d-portfolio), adapted as an original interactive developer workspace while preserving this project's D1 content model.
 
 ## Local development
 

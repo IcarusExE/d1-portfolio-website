@@ -6,8 +6,12 @@ test('renders the Turkish portfolio without language controls', async ({ page })
   await expect(page.locator('.project-item')).toHaveCount(2);
   await expect(page.locator('.skill-row')).toHaveCount(7);
   await expect(page.locator('html')).toHaveAttribute('lang', 'tr');
-  await expect(page.getByRole('heading', { name: 'Seçili çalışmalar' })).toBeVisible();
+  await expect(page.locator('#projects-title')).toContainText('Düşünceden');
   await expect(page.locator('.language-switch')).toHaveCount(0);
+  await expect(page.locator('#hero-canvas')).toBeVisible();
+  await expect(page.locator('#contact-canvas')).toBeVisible();
+  await expect(page.locator('.timeline-item')).toHaveCount(3);
+  await expect(page.locator('html')).toHaveClass(/webgl-ready/);
 });
 
 test('allows the administrator to sign in', async ({ page }) => {
