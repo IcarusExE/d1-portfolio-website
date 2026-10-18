@@ -3,6 +3,8 @@ import { expect, test } from '@playwright/test';
 test('renders the localized portfolio and switches language', async ({ page }) => {
   await page.goto('/');
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Kenan Kuşçu');
+  await expect(page.locator('.project-item')).toHaveCount(2);
+  await expect(page.locator('.skill-row')).toHaveCount(7);
   const initialLanguage = await page.evaluate(() => navigator.language.toLowerCase().startsWith('tr') ? 'tr' : 'en');
   await expect(page.locator('html')).toHaveAttribute('lang', initialLanguage);
 

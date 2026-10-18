@@ -34,20 +34,56 @@
           <p class="hero-statement" id="hero-statement">Fikirleri anlaşılır, hızlı ve sağlam dijital ürünlere dönüştürüyorum.</p>
           <a class="primary-link" href="#projects"><span data-i18n="viewWork">Çalışmalarımı incele</span><i data-lucide="arrow-down-right"></i></a>
         </div>
-        <aside class="hero-notes" aria-label="Kısa bilgiler">
+        <aside class="hero-system" aria-label="Teknik sistem özeti">
+          <header class="system-header">
+            <span data-i18n="currentBuild">Şu an geliştirdiğim</span>
+            <span class="system-state"><i></i><span data-i18n="active">Aktif</span></span>
+          </header>
+          <div class="system-canvas" aria-hidden="true">
+            <div class="system-browser">
+              <span></span><span></span><span></span>
+              <strong>portfolio.dev</strong>
+            </div>
+            <div class="system-flow">
+              <div class="system-node primary-node"><i data-lucide="layout-template"></i><span>Vanilla JS</span></div>
+              <span class="flow-line"></span>
+              <div class="system-node"><i data-lucide="cloud"></i><span>Hono Worker</span></div>
+              <span class="flow-line split-line"></span>
+              <div class="system-leaves">
+                <div class="system-node"><i data-lucide="database"></i><span>D1</span></div>
+                <div class="system-node"><i data-lucide="shield-check"></i><span>Auth</span></div>
+              </div>
+            </div>
+          </div>
+          <footer>
+            <span data-i18n="systemNote">Uçtan uca, yönetilebilir web ürünleri</span>
+            <i data-lucide="arrow-up-right"></i>
+          </footer>
+        </aside>
+      </section>
+
+      <section class="identity-strip" aria-label="Profil özeti">
+        <div class="identity-item">
+          <i data-lucide="graduation-cap"></i>
+          <div>
+            <span data-i18n="education">Eğitim</span>
+            <strong data-i18n="universityProgram">Ankara Üniversitesi · Bilgisayar Programcılığı</strong>
+          </div>
+        </div>
+        <div class="identity-item">
+          <i data-lucide="activity"></i>
+          <div>
+            <span data-i18n="development">Geliştirme durumu</span>
+            <strong data-i18n="shipping">Aktif olarak ürün geliştiriyor</strong>
+          </div>
+        </div>
+        <div class="identity-item">
+          <i data-lucide="map-pin"></i>
           <div>
             <span data-i18n="basedIn">Konum</span>
             <strong>Ankara, Türkiye</strong>
           </div>
-          <div>
-            <span data-i18n="education">Eğitim</span>
-            <strong data-i18n="university">Ankara Üniversitesi</strong>
-          </div>
-          <div>
-            <span data-i18n="focus">Odak</span>
-            <strong data-i18n="focusValue">Web ürünleri ve backend</strong>
-          </div>
-        </aside>
+        </div>
       </section>
 
       <section class="section projects-section" id="projects" aria-labelledby="projects-title">
@@ -69,8 +105,25 @@
       </section>
 
       <section class="section about-section" aria-labelledby="about-title">
-        <h2 id="about-title" data-i18n="about">Hakkımda</h2>
-        <p id="about-copy">Ankara Üniversitesi Bilgisayar Programcılığı öğrencisiyim. Öğrenirken üreten, kullanılabilir web deneyimleri geliştiren bir yazılım geliştiriciyim.</p>
+        <header class="about-heading">
+          <h2 id="about-title" data-i18n="about">Hakkımda</h2>
+          <span data-i18n="approachLabel">Yaklaşım</span>
+        </header>
+        <div class="about-content">
+          <p id="about-copy">Ankara Üniversitesi Bilgisayar Programcılığı öğrencisiyim. Öğrenirken üreten, kullanılabilir web deneyimleri geliştiren bir yazılım geliştiriciyim.</p>
+          <div class="about-grid">
+            <div>
+              <i data-lucide="scan-line"></i>
+              <strong data-i18n="clarityTitle">Önce netlik</strong>
+              <span data-i18n="clarityCopy">Karmaşıklığı sade, anlaşılır akışlara dönüştürüyorum.</span>
+            </div>
+            <div>
+              <i data-lucide="gauge"></i>
+              <strong data-i18n="qualityTitle">Ölçülebilir kalite</strong>
+              <span data-i18n="qualityCopy">Performans, erişilebilirlik ve güvenliği birlikte ele alıyorum.</span>
+            </div>
+          </div>
+        </div>
       </section>
 
       <section class="contact-section" id="contact" aria-labelledby="contact-title">

@@ -1,12 +1,23 @@
 import './styles.css';
+import './portfolio.css';
 import {
+  Activity,
   ArrowDownRight,
+  ArrowUpRight,
   ArrowUp,
   BriefcaseBusiness,
+  Cloud,
   Code2,
   createIcons,
+  Database,
   ExternalLink,
+  Gauge,
+  GraduationCap,
+  LayoutTemplate,
   Mail,
+  MapPin,
+  ScanLine,
+  ShieldCheck,
 } from 'lucide';
 import { api } from './shared/api.js';
 
@@ -15,11 +26,15 @@ const dictionary = {
     skip: 'İçeriğe geç', projects: 'Projeler', skills: 'Yetenekler', contact: 'İletişim',
     available: 'Yeni projelere açık', viewWork: 'Çalışmalarımı incele', basedIn: 'Konum',
     education: 'Eğitim', university: 'Ankara Üniversitesi', focus: 'Odak',
-    focusValue: 'Web ürünleri ve backend', selectedWork: 'Seçili çalışmalar',
+    focusValue: 'Web ürünleri ve backend', currentBuild: 'Şu an geliştirdiğim', active: 'Aktif',
+    systemNote: 'Uçtan uca, yönetilebilir web ürünleri', universityProgram: 'Ankara Üniversitesi · Bilgisayar Programcılığı',
+    development: 'Geliştirme durumu', shipping: 'Aktif olarak ürün geliştiriyor', selectedWork: 'Seçili çalışmalar',
     projectsIntro: 'Öğrenirken geliştirdiğim ve kullanılabilir hale getirdiğim projeler.',
     loading: 'İçerik yükleniyor...', toolkit: 'Çalışma araçlarım',
     skillsIntro: 'Bir fikri çalışan ürüne dönüştürmek için kullandığım teknolojiler.',
-    about: 'Hakkımda', buildTogether: 'Birlikte bir şey geliştirelim.',
+    about: 'Hakkımda', approachLabel: 'Yaklaşım', clarityTitle: 'Önce netlik',
+    clarityCopy: 'Karmaşıklığı sade, anlaşılır akışlara dönüştürüyorum.', qualityTitle: 'Ölçülebilir kalite',
+    qualityCopy: 'Performans, erişilebilirlik ve güvenliği birlikte ele alıyorum.', buildTogether: 'Birlikte bir şey geliştirelim.',
     contactCopy: 'Bir proje fikrini, staj fırsatını veya teknik bir konuyu konuşmak için ulaşabilirsin.',
     backTop: 'Başa dön', emptyProjects: 'Henüz yayınlanmış proje yok. Yeni çalışmalar yakında burada olacak.',
     emptySkills: 'Yetenek listesi yakında güncellenecek.', live: 'Canlı projeyi aç', source: 'Kaynak kodunu aç',
@@ -29,11 +44,15 @@ const dictionary = {
     skip: 'Skip to content', projects: 'Projects', skills: 'Skills', contact: 'Contact',
     available: 'Open to new projects', viewWork: 'Explore my work', basedIn: 'Based in',
     education: 'Education', university: 'Ankara University', focus: 'Focus',
-    focusValue: 'Web products and backend', selectedWork: 'Selected work',
+    focusValue: 'Web products and backend', currentBuild: 'Currently building', active: 'Active',
+    systemNote: 'End-to-end, manageable web products', universityProgram: 'Ankara University · Computer Programming',
+    development: 'Development status', shipping: 'Actively building products', selectedWork: 'Selected work',
     projectsIntro: 'Projects I have built and shaped into usable products while learning.',
     loading: 'Loading content...', toolkit: 'My toolkit',
     skillsIntro: 'Technologies I use to turn an idea into a working product.',
-    about: 'About me', buildTogether: 'Let’s build something together.',
+    about: 'About me', approachLabel: 'Approach', clarityTitle: 'Clarity first',
+    clarityCopy: 'I turn complexity into simple, understandable flows.', qualityTitle: 'Measurable quality',
+    qualityCopy: 'I treat performance, accessibility and security as one system.', buildTogether: 'Let’s build something together.',
     contactCopy: 'Reach out to discuss a project idea, an internship opportunity or a technical topic.',
     backTop: 'Back to top', emptyProjects: 'No published projects yet. New work will appear here soon.',
     emptySkills: 'The skills list will be updated soon.', live: 'Open live project', source: 'Open source code',
@@ -41,7 +60,10 @@ const dictionary = {
   },
 };
 
-const iconSet = { ArrowDownRight, ArrowUp, BriefcaseBusiness, Code2, ExternalLink, Mail };
+const iconSet = {
+  Activity, ArrowDownRight, ArrowUp, ArrowUpRight, BriefcaseBusiness, Cloud, Code2,
+  Database, ExternalLink, Gauge, GraduationCap, LayoutTemplate, Mail, MapPin, ScanLine, ShieldCheck,
+};
 let content = {
   settings: {
     name: 'Kenan Kuşçu',
@@ -100,10 +122,21 @@ function renderProjects() {
       image.loading = 'lazy';
       visual.append(image);
     } else {
-      visual.classList.add('project-placeholder');
-      const icon = document.createElement('i');
-      icon.dataset.lucide = 'code-2';
-      visual.append(icon);
+      visual.classList.add('project-artifact', `artifact-${index % 2 === 0 ? 'api' : 'app'}`);
+      const chrome = document.createElement('div');
+      chrome.className = 'artifact-chrome';
+      chrome.innerHTML = '<span></span><span></span><span></span>';
+      const label = document.createElement('strong');
+      label.textContent = index % 2 === 0 ? 'api.kenan.dev' : 'app.kenan.dev';
+      chrome.append(label);
+      const body = document.createElement('div');
+      body.className = 'artifact-body';
+      if (index % 2 === 0) {
+        body.innerHTML = '<span class="artifact-route"><b>GET</b> /api/public <i>200</i></span><span class="artifact-route"><b>POST</b> /api/projects <i>201</i></span><span class="artifact-route"><b>PUT</b> /api/settings <i>200</i></span>';
+      } else {
+        body.innerHTML = '<span class="artifact-sidebar"></span><span class="artifact-panel"><i></i><i></i><i></i></span><span class="artifact-mini"></span>';
+      }
+      visual.append(chrome, body);
     }
 
     const copy = document.createElement('div');
