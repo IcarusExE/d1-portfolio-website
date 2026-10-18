@@ -13,12 +13,9 @@ const webUrl = z.string().trim().max(2048).refine((value) => {
 
 const projectSchema = z.object({
   slug: z.string().trim().min(1).max(120).regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/),
-  title_tr: z.string().trim().min(1).max(160),
-  title_en: z.string().trim().min(1).max(160),
-  summary_tr: z.string().trim().min(1).max(500),
-  summary_en: z.string().trim().min(1).max(500),
-  description_tr: z.string().trim().max(5000).default(''),
-  description_en: z.string().trim().max(5000).default(''),
+  title: z.string().trim().min(1).max(160),
+  summary: z.string().trim().min(1).max(500),
+  description: z.string().trim().max(5000).default(''),
   image_url: webUrl.default(''),
   live_url: webUrl.default(''),
   source_url: webUrl.default(''),
@@ -39,12 +36,9 @@ function invalid(context, issues) {
 function values(project) {
   return [
     project.slug,
-    project.title_tr,
-    project.title_en,
-    project.summary_tr,
-    project.summary_en,
-    project.description_tr,
-    project.description_en,
+    project.title,
+    project.summary,
+    project.description,
     project.image_url,
     project.live_url,
     project.source_url,
@@ -65,9 +59,9 @@ projectRoutes.post('/', async (context) => {
 
   const result = await context.env.DB.prepare(`
     INSERT INTO projects (
-      slug, title_tr, title_en, summary_tr, summary_en, description_tr, description_en,
+      slug, title, summary, description,
       image_url, live_url, source_url, technologies, sort_order, featured, published
-    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
   `).bind(...values(parsed.data)).run();
   return context.json({ id: result.meta.last_row_id }, 201);
 });
@@ -90,8 +84,7 @@ projectRoutes.put('/:id', async (context) => {
 
   const result = await context.env.DB.prepare(`
     UPDATE projects SET
-      slug = ?, title_tr = ?, title_en = ?, summary_tr = ?, summary_en = ?,
-      description_tr = ?, description_en = ?, image_url = ?, live_url = ?, source_url = ?,
+      slug = ?, title = ?, summary = ?, description = ?, image_url = ?, live_url = ?, source_url = ?,
       technologies = ?, sort_order = ?, featured = ?, published = ?, updated_at = CURRENT_TIMESTAMP
     WHERE id = ?
   `).bind(...values(parsed.data), id).run();

@@ -90,7 +90,7 @@ function renderProjects() {
     const main = document.createElement('div');
     main.className = 'resource-main';
     const title = document.createElement('strong');
-    title.textContent = project.title_tr;
+    title.textContent = project.title;
     const meta = document.createElement('span');
     const dot = document.createElement('i');
     dot.className = `status-dot${project.published ? ' live' : ''}`;
@@ -131,7 +131,7 @@ function renderSkills() {
     const meta = document.createElement('span');
     const dot = document.createElement('i');
     dot.className = `status-dot${skill.published ? ' live' : ''}`;
-    meta.append(dot, document.createTextNode(`${skill.category_tr || 'Kategorisiz'} · Seviye ${skill.level}`));
+    meta.append(dot, document.createTextNode(`${skill.category || 'Kategorisiz'} · Seviye ${skill.level}`));
     main.append(title, meta);
     const actions = document.createElement('div');
     actions.className = 'resource-actions';
@@ -157,12 +157,9 @@ function projectPayload(form) {
   const data = new FormData(form);
   return {
     slug: data.get('slug').trim(),
-    title_tr: data.get('title_tr').trim(),
-    title_en: data.get('title_en').trim(),
-    summary_tr: data.get('summary_tr').trim(),
-    summary_en: data.get('summary_en').trim(),
-    description_tr: data.get('description_tr').trim(),
-    description_en: data.get('description_en').trim(),
+    title: data.get('title').trim(),
+    summary: data.get('summary').trim(),
+    description: data.get('description').trim(),
     image_url: data.get('image_url').trim(),
     live_url: data.get('live_url').trim(),
     source_url: data.get('source_url').trim(),
@@ -177,8 +174,7 @@ function skillPayload(form) {
   const data = new FormData(form);
   return {
     name: data.get('name').trim(),
-    category_tr: data.get('category_tr').trim(),
-    category_en: data.get('category_en').trim(),
+    category: data.get('category').trim(),
     level: Number(data.get('level')),
     sort_order: Number(data.get('sort_order')),
     published: data.get('published') === 'on',

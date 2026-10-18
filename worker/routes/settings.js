@@ -4,12 +4,9 @@ import { getSettings } from '../repositories/content.js';
 
 const SETTING_TYPES = {
   name: 'text',
-  title_tr: 'text',
-  title_en: 'text',
-  hero_tr: 'text',
-  hero_en: 'text',
-  about_tr: 'text',
-  about_en: 'text',
+  title: 'text',
+  hero: 'text',
+  about: 'text',
   email: 'email',
   github_url: 'url',
   linkedin_url: 'url',
@@ -27,12 +24,9 @@ const optionalWebUrl = z.string().trim().max(2048).refine((value) => {
 const settingsSchema = z.object({
   settings: z.object({
     name: z.string().trim().min(1).max(120),
-    title_tr: z.string().trim().min(1).max(220),
-    title_en: z.string().trim().min(1).max(220),
-    hero_tr: z.string().trim().min(1).max(500),
-    hero_en: z.string().trim().min(1).max(500),
-    about_tr: z.string().trim().min(1).max(5000),
-    about_en: z.string().trim().min(1).max(5000),
+    title: z.string().trim().min(1).max(220),
+    hero: z.string().trim().min(1).max(500),
+    about: z.string().trim().min(1).max(5000),
     email: z.union([z.email(), z.literal('')]),
     github_url: optionalWebUrl,
     linkedin_url: optionalWebUrl,

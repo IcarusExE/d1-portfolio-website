@@ -42,16 +42,6 @@ body {
   font-size: 0.78rem;
 }
 
-.language-switch {
-  border-color: rgb(148 160 175 / 0.25);
-  background: rgb(255 255 255 / 0.025);
-}
-
-.language-switch button[aria-pressed='true'] {
-  background: #dfe6f0;
-  color: #0b0f14;
-}
-
 .hero {
   min-height: min(45rem, calc(82svh - 5rem));
   max-height: none;

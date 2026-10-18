@@ -1,6 +1,6 @@
 # Kenan Kuşçu Portfolio
 
-Cloudflare Workers, D1, Tailwind CSS and Vanilla JavaScript based bilingual portfolio with a protected admin panel.
+Cloudflare Workers, D1, Tailwind CSS and Vanilla JavaScript based Turkish portfolio with a protected admin panel.
 
 ## Local development
 
@@ -32,9 +32,9 @@ npm run db:remote
 
 The database contains:
 
-- `projects`: bilingual project content, links, technologies, publication and ordering data.
-- `skills`: skill names, bilingual categories, levels, publication and ordering data.
-- `site_settings`: bilingual identity, introduction and contact values.
+- `projects`: Turkish project content, links, technologies, publication and ordering data.
+- `skills`: skill names, Turkish categories, levels, publication and ordering data.
+- `site_settings`: Turkish identity, introduction and contact values.
 
 ## Production deployment
 

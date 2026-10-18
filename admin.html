@@ -50,12 +50,9 @@
           <form id="settings-form" class="editor-form">
             <div class="form-section"><h2>Temel bilgiler</h2><div class="field-grid">
               <label class="full-field">İsim<input name="name" maxlength="120" required /></label>
-              <label>Unvan (TR)<input name="title_tr" maxlength="220" required /></label>
-              <label>Title (EN)<input name="title_en" maxlength="220" required /></label>
-              <label>Hero metni (TR)<textarea name="hero_tr" rows="3" maxlength="500" required></textarea></label>
-              <label>Hero text (EN)<textarea name="hero_en" rows="3" maxlength="500" required></textarea></label>
-              <label>Hakkımda (TR)<textarea name="about_tr" rows="5" maxlength="5000" required></textarea></label>
-              <label>About (EN)<textarea name="about_en" rows="5" maxlength="5000" required></textarea></label>
+              <label>Unvan<input name="title" maxlength="220" required /></label>
+              <label class="full-field">Hero metni<textarea name="hero" rows="3" maxlength="500" required></textarea></label>
+              <label class="full-field">Hakkımda<textarea name="about" rows="5" maxlength="5000" required></textarea></label>
             </div></div>
             <div class="form-section"><h2>İletişim</h2><div class="field-grid">
               <label>E-posta<input name="email" type="email" /></label>
@@ -83,13 +80,10 @@
         <header><div><p>Proje editörü</p><h2 id="project-dialog-title">Yeni proje</h2></div><button class="icon-button" type="button" data-close-dialog="project-dialog" aria-label="Kapat"><i data-lucide="x"></i></button></header>
         <input name="id" type="hidden" />
         <div class="field-grid dialog-fields">
-          <label>Başlık (TR)<input name="title_tr" maxlength="160" required /></label>
-          <label>Title (EN)<input name="title_en" maxlength="160" required /></label>
-          <label class="full-field">Slug<input name="slug" pattern="[a-z0-9]+(?:-[a-z0-9]+)*" maxlength="120" required /></label>
-          <label>Özet (TR)<textarea name="summary_tr" rows="3" maxlength="500" required></textarea></label>
-          <label>Summary (EN)<textarea name="summary_en" rows="3" maxlength="500" required></textarea></label>
-          <label>Açıklama (TR)<textarea name="description_tr" rows="5" maxlength="5000"></textarea></label>
-          <label>Description (EN)<textarea name="description_en" rows="5" maxlength="5000"></textarea></label>
+          <label>Başlık<input name="title" maxlength="160" required /></label>
+          <label>Slug<input name="slug" pattern="[a-z0-9]+(?:-[a-z0-9]+)*" maxlength="120" required /></label>
+          <label class="full-field">Özet<textarea name="summary" rows="3" maxlength="500" required></textarea></label>
+          <label class="full-field">Açıklama<textarea name="description" rows="5" maxlength="5000"></textarea></label>
           <label class="full-field">Teknolojiler <small>Virgülle ayır</small><input name="technologies" placeholder="JavaScript, Cloudflare, D1" /></label>
           <label>Görsel URL<input name="image_url" type="url" /></label>
           <label>Canlı site URL<input name="live_url" type="url" /></label>
@@ -109,8 +103,7 @@
         <input name="id" type="hidden" />
         <div class="field-grid dialog-fields">
           <label class="full-field">Yetenek adı<input name="name" maxlength="80" required /></label>
-          <label>Kategori (TR)<input name="category_tr" maxlength="80" /></label>
-          <label>Category (EN)<input name="category_en" maxlength="80" /></label>
+          <label class="full-field">Kategori<input name="category" maxlength="80" /></label>
           <label>Seviye<input name="level" type="number" min="0" max="100" value="0" /></label>
           <label>Sıra<input name="sort_order" type="number" min="0" max="10000" value="0" /></label>
           <label class="check-label full-field"><input name="published" type="checkbox" checked />Yayında</label>

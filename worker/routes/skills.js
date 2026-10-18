@@ -4,8 +4,7 @@ import { listSkills } from '../repositories/content.js';
 
 const skillSchema = z.object({
   name: z.string().trim().min(1).max(80),
-  category_tr: z.string().trim().max(80).default(''),
-  category_en: z.string().trim().max(80).default(''),
+  category: z.string().trim().max(80).default(''),
   level: z.coerce.number().int().min(0).max(100).default(0),
   sort_order: z.coerce.number().int().min(0).max(10000).default(0),
   published: z.boolean().default(true),
@@ -24,9 +23,9 @@ skillRoutes.post('/', async (context) => {
   if (!parsed.success) return invalid(context, parsed.error.flatten());
   const skill = parsed.data;
   const result = await context.env.DB.prepare(`
-    INSERT INTO skills (name, category_tr, category_en, level, sort_order, published)
-    VALUES (?, ?, ?, ?, ?, ?)
-  `).bind(skill.name, skill.category_tr, skill.category_en, skill.level, skill.sort_order, Number(skill.published)).run();
+    INSERT INTO skills (name, category, level, sort_order, published)
+    VALUES (?, ?, ?, ?, ?)
+  `).bind(skill.name, skill.category, skill.level, skill.sort_order, Number(skill.published)).run();
   return context.json({ id: result.meta.last_row_id }, 201);
 });
 
@@ -36,9 +35,9 @@ skillRoutes.put('/:id', async (context) => {
   if (!Number.isInteger(id) || id < 1 || !parsed.success) return invalid(context, parsed.success ? {} : parsed.error.flatten());
   const skill = parsed.data;
   const result = await context.env.DB.prepare(`
-    UPDATE skills SET name = ?, category_tr = ?, category_en = ?, level = ?, sort_order = ?,
+    UPDATE skills SET name = ?, category = ?, level = ?, sort_order = ?,
       published = ?, updated_at = CURRENT_TIMESTAMP WHERE id = ?
-  `).bind(skill.name, skill.category_tr, skill.category_en, skill.level, skill.sort_order, Number(skill.published), id).run();
+  `).bind(skill.name, skill.category, skill.level, skill.sort_order, Number(skill.published), id).run();
   return result.meta.changes
     ? context.json({ id })
     : context.json({ error: 'not_found', message: 'Skill not found.' }, 404);

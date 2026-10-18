@@ -1,24 +1,13 @@
 import { expect, test } from '@playwright/test';
 
-test('renders the localized portfolio and switches language', async ({ page }) => {
+test('renders the Turkish portfolio without language controls', async ({ page }) => {
   await page.goto('/');
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Kenan Kuşçu');
   await expect(page.locator('.project-item')).toHaveCount(2);
   await expect(page.locator('.skill-row')).toHaveCount(7);
-  const initialLanguage = await page.evaluate(() => navigator.language.toLowerCase().startsWith('tr') ? 'tr' : 'en');
-  await expect(page.locator('html')).toHaveAttribute('lang', initialLanguage);
-
-  if (initialLanguage === 'tr') {
-    await expect(page.getByRole('heading', { name: 'Seçili çalışmalar' })).toBeVisible();
-    await page.getByRole('button', { name: 'EN' }).click();
-    await expect(page.getByRole('heading', { name: 'Selected work' })).toBeVisible();
-    await expect(page.locator('html')).toHaveAttribute('lang', 'en');
-  } else {
-    await expect(page.getByRole('heading', { name: 'Selected work' })).toBeVisible();
-    await page.getByRole('button', { name: 'TR' }).click();
-    await expect(page.getByRole('heading', { name: 'Seçili çalışmalar' })).toBeVisible();
-    await expect(page.locator('html')).toHaveAttribute('lang', 'tr');
-  }
+  await expect(page.locator('html')).toHaveAttribute('lang', 'tr');
+  await expect(page.getByRole('heading', { name: 'Seçili çalışmalar' })).toBeVisible();
+  await expect(page.locator('.language-switch')).toHaveCount(0);
 });
 
 test('allows the administrator to sign in', async ({ page }) => {
