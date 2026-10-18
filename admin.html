@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="theme-color" content="#090b0e" />
+    <title>Portfolyo Yönetimi | Kenan Kuşçu</title>
+    <script type="module" src="/src/admin/admin.js"></script>
+  </head>
+  <body class="admin-body">
+    <main class="login-shell" id="login-view">
+      <section class="login-panel" aria-labelledby="login-title">
+        <a class="wordmark" href="/"><span>Kenan</span><strong>Kuşçu</strong></a>
+        <div>
+          <p class="admin-kicker">Portfolyo yönetimi</p>
+          <h1 id="login-title">Tekrar hoş geldin.</h1>
+          <p>İçerikleri düzenlemek için yönetici hesabınla giriş yap.</p>
+        </div>
+        <form id="login-form" class="form-stack">
+          <label>Kullanıcı adı<input name="username" autocomplete="username" required /></label>
+          <label>Parola<input name="password" type="password" autocomplete="current-password" minlength="8" required /></label>
+          <p class="form-error" id="login-error" role="alert"></p>
+          <button class="primary-button" type="submit"><span>Giriş yap</span><i data-lucide="log-in"></i></button>
+        </form>
+        <a class="back-link" href="/"><i data-lucide="arrow-left"></i>Ana sayfaya dön</a>
+      </section>
+    </main>
+
+    <div class="admin-shell" id="admin-view" hidden>
+      <aside class="admin-sidebar">
+        <a class="wordmark" href="/"><span>Kenan</span><strong>Kuşçu</strong></a>
+        <nav aria-label="Yönetim menüsü">
+          <button class="admin-nav active" type="button" data-panel="settings"><i data-lucide="settings-2"></i>Site ayarları</button>
+          <button class="admin-nav" type="button" data-panel="projects"><i data-lucide="folders"></i>Projeler</button>
+          <button class="admin-nav" type="button" data-panel="skills"><i data-lucide="wrench"></i>Yetenekler</button>
+        </nav>
+        <button class="admin-nav logout-button" id="logout-button" type="button"><i data-lucide="log-out"></i>Çıkış yap</button>
+      </aside>
+
+      <main class="admin-main">
+        <header class="admin-topbar">
+          <button class="icon-button mobile-menu" id="menu-button" type="button" aria-label="Menüyü aç"><i data-lucide="menu"></i></button>
+          <div><p>Yönetim paneli</p><strong id="admin-username">admin</strong></div>
+          <a class="secondary-button" href="/" target="_blank" rel="noopener"><i data-lucide="external-link"></i>Siteyi görüntüle</a>
+        </header>
+
+        <section class="admin-panel" data-panel-view="settings">
+          <div class="admin-heading"><div><h1>Site ayarları</h1><p>Kimlik, tanıtım metinleri ve iletişim bağlantıları.</p></div></div>
+          <form id="settings-form" class="editor-form">
+            <div class="form-section"><h2>Temel bilgiler</h2><div class="field-grid">
+              <label class="full-field">İsim<input name="name" maxlength="120" required /></label>
+              <label>Unvan (TR)<input name="title_tr" maxlength="220" required /></label>
+              <label>Title (EN)<input name="title_en" maxlength="220" required /></label>
+              <label>Hero metni (TR)<textarea name="hero_tr" rows="3" maxlength="500" required></textarea></label>
+              <label>Hero text (EN)<textarea name="hero_en" rows="3" maxlength="500" required></textarea></label>
+              <label>Hakkımda (TR)<textarea name="about_tr" rows="5" maxlength="5000" required></textarea></label>
+              <label>About (EN)<textarea name="about_en" rows="5" maxlength="5000" required></textarea></label>
+            </div></div>
+            <div class="form-section"><h2>İletişim</h2><div class="field-grid">
+              <label>E-posta<input name="email" type="email" /></label>
+              <label>GitHub URL<input name="github_url" type="url" /></label>
+              <label>LinkedIn URL<input name="linkedin_url" type="url" /></label>
+            </div></div>
+            <div class="sticky-actions"><span class="save-status" id="settings-status" role="status"></span><button class="primary-button" type="submit"><i data-lucide="save"></i>Değişiklikleri kaydet</button></div>
+          </form>
+        </section>
+
+        <section class="admin-panel" data-panel-view="projects" hidden>
+          <div class="admin-heading"><div><h1>Projeler</h1><p>Çalışmalarını yayınla, düzenle ve görünme sırasını değiştir.</p></div><button class="primary-button" id="add-project" type="button"><i data-lucide="plus"></i>Proje ekle</button></div>
+          <div class="resource-list" id="admin-projects"></div>
+        </section>
+
+        <section class="admin-panel" data-panel-view="skills" hidden>
+          <div class="admin-heading"><div><h1>Yetenekler</h1><p>Araçlarını, kategorilerini ve seviyelerini yönet.</p></div><button class="primary-button" id="add-skill" type="button"><i data-lucide="plus"></i>Yetenek ekle</button></div>
+          <div class="resource-list" id="admin-skills"></div>
+        </section>
+      </main>
+    </div>
+
+    <dialog class="editor-dialog" id="project-dialog">
+      <form id="project-form" method="dialog" class="dialog-form">
+        <header><div><p>Proje editörü</p><h2 id="project-dialog-title">Yeni proje</h2></div><button class="icon-button" type="button" data-close-dialog="project-dialog" aria-label="Kapat"><i data-lucide="x"></i></button></header>
+        <input name="id" type="hidden" />
+        <div class="field-grid dialog-fields">
+          <label>Başlık (TR)<input name="title_tr" maxlength="160" required /></label>
+          <label>Title (EN)<input name="title_en" maxlength="160" required /></label>
+          <label class="full-field">Slug<input name="slug" pattern="[a-z0-9]+(?:-[a-z0-9]+)*" maxlength="120" required /></label>
+          <label>Özet (TR)<textarea name="summary_tr" rows="3" maxlength="500" required></textarea></label>
+          <label>Summary (EN)<textarea name="summary_en" rows="3" maxlength="500" required></textarea></label>
+          <label>Açıklama (TR)<textarea name="description_tr" rows="5" maxlength="5000"></textarea></label>
+          <label>Description (EN)<textarea name="description_en" rows="5" maxlength="5000"></textarea></label>
+          <label class="full-field">Teknolojiler <small>Virgülle ayır</small><input name="technologies" placeholder="JavaScript, Cloudflare, D1" /></label>
+          <label>Görsel URL<input name="image_url" type="url" /></label>
+          <label>Canlı site URL<input name="live_url" type="url" /></label>
+          <label>Kaynak kod URL<input name="source_url" type="url" /></label>
+          <label>Sıra<input name="sort_order" type="number" min="0" max="10000" value="0" /></label>
+          <label class="check-label"><input name="featured" type="checkbox" />Öne çıkar</label>
+          <label class="check-label"><input name="published" type="checkbox" checked />Yayında</label>
+        </div>
+        <p class="form-error" id="project-error" role="alert"></p>
+        <footer><button class="secondary-button" type="button" data-close-dialog="project-dialog">Vazgeç</button><button class="primary-button" type="submit"><i data-lucide="save"></i>Projeyi kaydet</button></footer>
+      </form>
+    </dialog>
+
+    <dialog class="editor-dialog small-dialog" id="skill-dialog">
+      <form id="skill-form" method="dialog" class="dialog-form">
+        <header><div><p>Yetenek editörü</p><h2 id="skill-dialog-title">Yeni yetenek</h2></div><button class="icon-button" type="button" data-close-dialog="skill-dialog" aria-label="Kapat"><i data-lucide="x"></i></button></header>
+        <input name="id" type="hidden" />
+        <div class="field-grid dialog-fields">
+          <label class="full-field">Yetenek adı<input name="name" maxlength="80" required /></label>
+          <label>Kategori (TR)<input name="category_tr" maxlength="80" /></label>
+          <label>Category (EN)<input name="category_en" maxlength="80" /></label>
+          <label>Seviye<input name="level" type="number" min="0" max="100" value="0" /></label>
+          <label>Sıra<input name="sort_order" type="number" min="0" max="10000" value="0" /></label>
+          <label class="check-label full-field"><input name="published" type="checkbox" checked />Yayında</label>
+        </div>
+        <p class="form-error" id="skill-error" role="alert"></p>
+        <footer><button class="secondary-button" type="button" data-close-dialog="skill-dialog">Vazgeç</button><button class="primary-button" type="submit"><i data-lucide="save"></i>Yeteneği kaydet</button></footer>
+      </form>
+    </dialog>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>

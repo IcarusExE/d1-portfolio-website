@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Kenan Kuşçu - Yazılım geliştirici portfolyosu" />
+    <meta name="theme-color" content="#090b0e" />
+    <title>Kenan Kuşçu | Yazılım Geliştirici</title>
+    <script type="module" src="/src/main.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content" data-i18n="skip">İçeriğe geç</a>
+    <header class="site-header" id="top">
+      <a class="wordmark" href="#top" aria-label="Kenan Kuşçu ana sayfa">
+        <span>Kenan</span><strong>Kuşçu</strong>
+      </a>
+      <nav class="desktop-nav" aria-label="Ana menü">
+        <a href="#projects" data-i18n="projects">Projeler</a>
+        <a href="#skills" data-i18n="skills">Yetenekler</a>
+        <a href="#contact" data-i18n="contact">İletişim</a>
+      </nav>
+      <div class="language-switch" role="group" aria-label="Dil seçimi">
+        <button type="button" data-language="tr" aria-pressed="true">TR</button>
+        <button type="button" data-language="en" aria-pressed="false">EN</button>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <section class="hero" aria-labelledby="hero-name">
+        <div class="hero-copy">
+          <p class="availability"><span></span><span data-i18n="available">Yeni projelere açık</span></p>
+          <h1 id="hero-name">Kenan Kuşçu</h1>
+          <p class="hero-title" id="hero-title">Yazılım Geliştirici ve Bilgisayar Programcılığı Öğrencisi</p>
+          <p class="hero-statement" id="hero-statement">Fikirleri anlaşılır, hızlı ve sağlam dijital ürünlere dönüştürüyorum.</p>
+          <a class="primary-link" href="#projects"><span data-i18n="viewWork">Çalışmalarımı incele</span><i data-lucide="arrow-down-right"></i></a>
+        </div>
+        <aside class="hero-notes" aria-label="Kısa bilgiler">
+          <div>
+            <span data-i18n="basedIn">Konum</span>
+            <strong>Ankara, Türkiye</strong>
+          </div>
+          <div>
+            <span data-i18n="education">Eğitim</span>
+            <strong data-i18n="university">Ankara Üniversitesi</strong>
+          </div>
+          <div>
+            <span data-i18n="focus">Odak</span>
+            <strong data-i18n="focusValue">Web ürünleri ve backend</strong>
+          </div>
+        </aside>
+      </section>
+
+      <section class="section projects-section" id="projects" aria-labelledby="projects-title">
+        <header class="section-heading">
+          <h2 id="projects-title" data-i18n="selectedWork">Seçili çalışmalar</h2>
+          <p data-i18n="projectsIntro">Öğrenirken geliştirdiğim ve kullanılabilir hale getirdiğim projeler.</p>
+        </header>
+        <div class="project-list" id="project-list" aria-live="polite">
+          <div class="loading-line" data-i18n="loading">İçerik yükleniyor...</div>
+        </div>
+      </section>
+
+      <section class="section skills-section" id="skills" aria-labelledby="skills-title">
+        <header class="section-heading">
+          <h2 id="skills-title" data-i18n="toolkit">Çalışma araçlarım</h2>
+          <p data-i18n="skillsIntro">Bir fikri çalışan ürüne dönüştürmek için kullandığım teknolojiler.</p>
+        </header>
+        <div class="skills-list" id="skills-list" aria-live="polite"></div>
+      </section>
+
+      <section class="section about-section" aria-labelledby="about-title">
+        <h2 id="about-title" data-i18n="about">Hakkımda</h2>
+        <p id="about-copy">Ankara Üniversitesi Bilgisayar Programcılığı öğrencisiyim. Öğrenirken üreten, kullanılabilir web deneyimleri geliştiren bir yazılım geliştiriciyim.</p>
+      </section>
+
+      <section class="contact-section" id="contact" aria-labelledby="contact-title">
+        <div>
+          <h2 id="contact-title" data-i18n="buildTogether">Birlikte bir şey geliştirelim.</h2>
+          <p data-i18n="contactCopy">Bir proje fikrini, staj fırsatını veya teknik bir konuyu konuşmak için ulaşabilirsin.</p>
+        </div>
+        <div class="contact-links" id="contact-links"></div>
+      </section>
+    </main>
+
+    <footer>
+      <span>© <span id="year"></span> Kenan Kuşçu</span>
+      <a href="#top"><span data-i18n="backTop">Başa dön</span><i data-lucide="arrow-up"></i></a>
+    </footer>
+  </body>
+</html>
